@@ -278,7 +278,7 @@ td:first-child {
 }
 
 .grain-effect {
-  background: url('assets/grain.png');
+  background: url('grain.png');
   opacity: 0.05;
   position: absolute;
   inset: 0;
