@@ -10,117 +10,20 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Big+Shoulders:opsz,wght@10..72,100..900&family=Geist+Mono:wght@100..900&family=Geist:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
     rel="stylesheet">
-  <style>
-    html,
-    body {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-
-      background: black;
-      color: rgb(179, 179, 179);
-      color-scheme: dark;
-
-      font-family: 'Inter', sans-serif;
-
-      font-size: 18px;
-    }
-
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-      color: rgb(247, 255, 247);
-    }
-
-    a {
-      color: white;
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: line-through;
-    }
-
-    .display {
-      font-family: 'Big Shoulders', cursive;
-    }
-
-    .header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding-right: 24px;
-    }
-
-    .page {
-      display: flex;
-      flex-direction: column;
-      padding: 48px
-    }
-
-    .sidebar {
-      display: flex;
-      flex-direction: column;
-      padding: 48px;
-      width: 50%;
-    }
-
-    .content {
-      width: 100%;
-      overflow: hidden;
-    }
-
-    .video {
-      display: block;
-      overflow: hidden;
-      width: 115vw;
-      height: 100vh;
-      object-fit: cover;
-      object-position: center;
-      transform: translateX(-30%);
-      filter: grayscale(1)
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-
-    th {
-      text-align: left;
-    }
-
-    tr {
-      border-bottom: 1px solid rgb(47, 47, 47);
-      line-height: 3rem;
-    }
-
-    @keyframes fadein {
-      from {
-        opacity: 0;
-        transform: translateY(-15px)
-      }
-      to {
-        opacity: 1;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 
-<body style="animation: fadein 1s ease-in-out;">
+<body class="fade-in">
   <div class="page">
     <header class="header">
-      <img src="logo.svg" width="45" alt="Rawuvisuals Logo">
+      <img src="assets/logo.svg" width="45" alt="Rawuvisuals Logo">
       <a href="/">Forside</a>
-      <a href="#">Hvem</a>
+      <a href="#" class="active">Hvem</a>
       <a href="/cases.html">Cases</a>
     </header>
     <main class="content">
       <h1>Hvem er jeg?</h1>
-      <div style="display: flex; gap: 48px; line-height: 2rem;">
+      <div class="content-flex">
         <p>Jeg hedder Oliver, en videograf og redaktør dedikeret til kunsten af visuel fortælling gennem video. Jeg er
           passioneret omkring at fange øjeblikke og omdanne dem til overbevisende fortællinger, der engagerer og
           inspirerer. Hvert projekt er en mulighed for at udforske nye visuelle sprog og forbinde seere med historien.
@@ -149,7 +52,7 @@
         </tbody>
       </table>
 
-      <table style="margin-top: 48px">
+      <table class="table-margin-top">
         <thead>
           <tr>
             <th>Uddannelse</th>
@@ -174,24 +77,31 @@
         </tbody>
       </table>
     </main>
+    <footer class="footer">
+      <div class="footer-row">
+        <a href="mailto:rawubusiness@gmail.com">rawubusiness@gmail.com</a>
+        <div>
+          <a href="#">Tiktok</a>
+          <a href="#">Instagram</a>
+        </div>
+      </div>
+      <div class="footer-row footer-row-margin">
+        <a href="tel:+4521141517">+45 21 41 51 7</a>
+        <div>
+          <a href="#">Youtube</a>
+          <a href="#">X</a>
+        </div>
+      </div>
+    </footer>
   </div>
 
   <!-- Don't touch this shit, it's the fancy ass gradient. -->
-  <div
-    style="background: linear-gradient(220deg,rgba(255,255,255,0) 60.05382521119378%,hsl(0,0%,0%) 120.0062716057621%); inset: 0; width: 100vw; height: 100vh; position: fixed; z-index: 9999; pointer-events: none;">
-    <div id="grain"
-      style="background: url('grain.png'); opacity: 0.05; position: absolute; inset: 0; width: 100vw; height: 100vh; z-index: 9999;">
+  <div class="gradient-overlay">
+    <div id="grain" class="grain-effect">
     </div>
   </div>
 
-  <script type="module">
-    const grain = document.getElementById("grain")
-    setInterval(() => {
-      const x = (Math.random() - 0.5) * 100 // Range: -5 to +5
-      const y = (Math.random() - 0.5) * 100
-      grain.style.transform = `translate(${x}px, ${y}px)`
-    }, 50)
-  </script>
+  <script src="scripts.js"></script>
 </body>
 
 </html>

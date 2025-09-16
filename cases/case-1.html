@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Case 1 – Rawuvisuals</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Big+Shoulders:opsz,wght@10..72,100..900&family=Geist+Mono:wght@100..900&family=Geist:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+</head>
+
+<body class="fade-in">
+  <div class="page">
+    <header class="header">
+      <img src="../assets/logo.svg" width="45" alt="Rawuvisuals Logo">
+      <a href="/">Forside</a>
+      <a href="/hvem.html">Hvem</a>
+      <a href="/cases.html" class="active">Cases</a>
+    </header>
+    <main class="content">
+      <h1>Case 1: Grøn Energi Kampagne</h1>
+      <!-- Modal for video -->
+      <div id="video-modal" class="video-modal">
+        <div class="modal-content">
+          <button id="close-modal" class="close-button">&times;</button>
+          <iframe id="modal-video" class="modal-video" src="" allowfullscreen></iframe>
+        </div>
+      </div>
+      <div class="content-flex content-flex-wrap">
+        <div class="left-column">
+          <div class="video-container">
+            <img id="video-thumb" class="video-thumb"
+              src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80"
+              alt="Grøn Energi" />
+            <button id="play-btn" class="play-button" aria-label="Play video">
+              <img src="../assets/play.svg" alt="Play" width="36" height="36" class="play-icon" />
+            </button>
+          </div>
+        </div>
+        <div class="right-column">
+          <h2>Baggrund</h2>
+          <p>Dette projekt blev udført for at fremme grøn energi i Danmark. Målet var at skabe en visuel fortælling, der
+            engagerede både unge og voksne i at tage mere bæredygtige valg i hverdagen.</p>
+          <h2>Processen</h2>
+          <p>Vi arbejdede tæt sammen med kunden for at forstå deres vision og værdier. Gennem research, interviews og
+            optagelser på forskellige lokationer blev der skabt et autentisk og inspirerende udtryk.</p>
+          <h2>Resultat</h2>
+          <p>Kampagnen blev lanceret på sociale medier og modtog stor opmærksomhed. Videoen blev delt bredt og har
+            inspireret mange til at tænke grønnere.</p>
+        </div>
+      </div>
+    </main>
+    <footer class="footer">
+      <div class="footer-row">
+        <a href="mailto:rawubusiness@gmail.com">rawubusiness@gmail.com</a>
+        <div>
+          <a href="#">Tiktok</a>
+          <a href="#">Instagram</a>
+        </div>
+      </div>
+      <div class="footer-row footer-row-margin">
+        <a href="tel:+4521141517">+45 21 41 51 7</a>
+        <div>
+          <a href="#">Youtube</a>
+          <a href="#">X</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Don't touch this shit, it's the fancy ass gradient. -->
+  <div class="gradient-overlay">
+    <div id="grain" class="grain-effect">
+    </div>
+  </div>
+
+  <script src="../scripts.js"></script>
+</body>
+
+</html>
