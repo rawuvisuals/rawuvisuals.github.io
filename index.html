@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rawuvisuals</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Big+Shoulders:opsz,wght@10..72,100..900&family=Geist+Mono:wght@100..900&family=Geist:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+    rel="stylesheet">
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+
+      background: black;
+      color: white;
+      color-scheme: dark;
+
+      font-family: 'Inter', sans-serif;
+
+      font-size: 18px;
+    }
+
+    a {
+      color: white;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: line-through;
+    }
+
+    .display {
+      font-family: 'Big Shoulders', cursive;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-right: 24px;
+    }
+
+    .page {
+      display: flex;
+    }
+
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      padding: 48px;
+      width: 50%;
+      overflow: hidden;
+    }
+
+    .content {
+      width: 50%;
+      overflow: hidden;
+    }
+
+    .video {
+      display: block;
+      overflow: hidden;
+      width: 120vw;
+      height: 100vh;
+      object-fit: cover;
+      object-position: center;
+      transform: translateX(-30%);
+      filter: grayscale(1)
+    }
+
+    @keyframes fadein {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <aside class="sidebar">
+      <header class="header">
+        <img src="logo.svg" width="45" alt="Rawuvisuals Logo">
+        <a href="/">Forside</a>
+        <a href="/hvem.html">Hvem</a>
+        <a href="/cases.html">Cases</a>
+      </header>
+
+      <div style="flex-grow: 1;display: flex;flex-direction: column;justify-content: center;">
+        <h1 class="display"
+          style="font-size: 8.5vw; letter-spacing: -0.04em; line-height: 1em; transform: scaleY(1.6) scaleX(1.6); font-weight: 400; margin-inline: auto; animation: fadein 1s ease-in-out;">
+          RAWUVISUALS
+        </h1>
+
+        <canvas id="cobe" style="width: 500px; height: 500px; margin-inline: auto; margin-top: -6rem" width="500"
+          height="500"></canvas>
+        <script type="module">
+          import createGlobe from 'https://cdn.skypack.dev/cobe'
+
+          let phi = 0
+          let canvas = document.getElementById("cobe")
+
+          const globe = createGlobe(canvas, {
+            devicePixelRatio: 2,
+            width: 1000,
+            height: 1000,
+            phi: 0,
+            theta: 0,
+            dark: 1,
+            diffuse: 1.2,
+            scale: 1,
+            mapSamples: 16000,
+            mapBrightness: 6,
+            baseColor: [1, 1, 1],
+            markerColor: [1, 0.5, 1],
+            glowColor: [1, 1, 1],
+            offset: [0, 0],
+            markers: [],
+            onRender: (state) => {
+              // Called on every animation frame.
+              // `state` will be an empty object, return updated params.
+              state.phi = phi
+              phi += 0.01
+            },
+          })
+        </script>
+      </div>
+
+      <div>
+        <div style="display:flex;align-items: center;justify-content: space-between;">
+          <a href="mailto:rawubusiness@gmail.com">rawubusiness@gmail.com</a>
+          <div>
+            <a href="#">Tiktok</a>
+            <a href="#">Instagram</a>
+          </div>
+        </div>
+        <div style="display:flex;align-items: center;justify-content: space-between;margin-top: 12px">
+          <a href="tel:+4521141517">+45 21 41 51 7</a>
+          <div>
+            <a href="#">Youtube</a>
+            <a href="#">X</a>
+          </div>
+        </div>
+      </div>
+    </aside>
+    <main class="content">
+      <video autoplay loop muted class="video">
+        <source src="haardting.mp4" type="video/mp4">
+      </video>
+    </main>
+  </div>
+
+  <!-- Don't touch this shit, it's the fancy ass gradient. -->
+  <div
+    style="background: linear-gradient(220deg,rgba(255,255,255,0) 60.05382521119378%,hsl(0,0%,0%) 120.0062716057621%); inset: 0; width: 100vw; height: 100vh; position: fixed; z-index: 9999; pointer-events: none;">
+    <div id="grain"
+      style="background: url('grain.png'); opacity: 0.05; position: absolute; inset: 0; width: 100vw; height: 100vh; z-index: 9999;">
+    </div>
+  </div>
+
+  <script type="module">
+    const grain = document.getElementById("grain")
+    setInterval(() => {
+      const x = (Math.random() - 0.5) * 100 // Range: -5 to +5
+      const y = (Math.random() - 0.5) * 100
+      grain.style.transform = `translate(${x}px, ${y}px)`
+    }, 50)
+  </script>
+  </div>
+</body>
+
+</html>

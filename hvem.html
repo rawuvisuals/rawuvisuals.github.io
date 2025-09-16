@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rawuvisuals</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Big+Shoulders:opsz,wght@10..72,100..900&family=Geist+Mono:wght@100..900&family=Geist:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+    rel="stylesheet">
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+
+      background: black;
+      color: rgb(179, 179, 179);
+      color-scheme: dark;
+
+      font-family: 'Inter', sans-serif;
+
+      font-size: 18px;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      color: rgb(247, 255, 247);
+    }
+
+    a {
+      color: white;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: line-through;
+    }
+
+    .display {
+      font-family: 'Big Shoulders', cursive;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-right: 24px;
+    }
+
+    .page {
+      display: flex;
+      flex-direction: column;
+      padding: 48px
+    }
+
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      padding: 48px;
+      width: 50%;
+    }
+
+    .content {
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .video {
+      display: block;
+      overflow: hidden;
+      width: 115vw;
+      height: 100vh;
+      object-fit: cover;
+      object-position: center;
+      transform: translateX(-30%);
+      filter: grayscale(1)
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th {
+      text-align: left;
+    }
+
+    tr {
+      border-bottom: 1px solid rgb(47, 47, 47);
+      line-height: 3rem;
+    }
+
+    @keyframes fadein {
+      from {
+        opacity: 0;
+        transform: translateY(-15px)
+      }
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+
+<body style="animation: fadein 1s ease-in-out;">
+  <div class="page">
+    <header class="header">
+      <img src="logo.svg" width="45" alt="Rawuvisuals Logo">
+      <a href="/">Forside</a>
+      <a href="#">Hvem</a>
+      <a href="/cases.html">Cases</a>
+    </header>
+    <main class="content">
+      <h1>Hvem er jeg?</h1>
+      <div style="display: flex; gap: 48px; line-height: 2rem;">
+        <p>Jeg hedder Oliver, en videograf og redaktør dedikeret til kunsten af visuel fortælling gennem video. Jeg er
+          passioneret omkring at fange øjeblikke og omdanne dem til overbevisende fortællinger, der engagerer og
+          inspirerer. Hvert projekt er en mulighed for at udforske nye visuelle sprog og forbinde seere med historien.
+        </p>
+        <p>Som redaktør redigerer jeg videoer for individer/brands, som jeg antager troværdige og som udviser respekt
+          for deres brand. Derfor skyder og klipper jeg altid inden jeg modtager betaling. På den måde kan kunden og jeg
+          samarbejde og dermed sikre det bedst mulige slutprodukt til kunden.</p>
+        <p>Med erfaring i forskellige aspekter af filmproduktion, ligger mit engagement i at udvikle projekter, der
+          forener æstetik med meningsfuld indhold. Gennem den rette strategi samt godt samarbejde mener jeg, at man når
+          i mål på den mest bæredygtige måde.</p>
+      </div>
+
+
+      <table>
+        <thead>
+          <tr>
+            <th>Udgivelser</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Mormor's Eventyr</td>
+            <td>Danmark</td>
+            <td>12. dec. 2024</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table style="margin-top: 48px">
+        <thead>
+          <tr>
+            <th>Uddannelse</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Bachelorgrad i Multiplatform, Storytelling & Produktion</td>
+            <td>VIA University College</td>
+            <td>1. jan. 2026</td>
+          </tr>
+          <tr>
+            <td>Højskole forløb med fokus på storytelling & filmproduktion</td>
+            <td>Odder Højskole</td>
+            <td>15. jun. 2022</td>
+          </tr>
+          <tr>
+            <td>Masterclass med fokus på klip</td>
+            <td>Den Jyske Filmskole</td>
+            <td>30. dec. 2021</td>
+          </tr>
+        </tbody>
+      </table>
+    </main>
+  </div>
+
+  <!-- Don't touch this shit, it's the fancy ass gradient. -->
+  <div
+    style="background: linear-gradient(220deg,rgba(255,255,255,0) 60.05382521119378%,hsl(0,0%,0%) 120.0062716057621%); inset: 0; width: 100vw; height: 100vh; position: fixed; z-index: 9999; pointer-events: none;">
+    <div id="grain"
+      style="background: url('grain.png'); opacity: 0.05; position: absolute; inset: 0; width: 100vw; height: 100vh; z-index: 9999;">
+    </div>
+  </div>
+
+  <script type="module">
+    const grain = document.getElementById("grain")
+    setInterval(() => {
+      const x = (Math.random() - 0.5) * 100 // Range: -5 to +5
+      const y = (Math.random() - 0.5) * 100
+      grain.style.transform = `translate(${x}px, ${y}px)`
+    }, 50)
+  </script>
+</body>
+
+</html>
