@@ -161,7 +161,7 @@ a:hover {
   height: 100vh;
   object-fit: cover;
   object-position: center;
-  transform: translateX(-30%);
+  transform: translateX(-30%) scale(1.1);
   filter: grayscale(1);
 }
 
@@ -192,6 +192,25 @@ td:first-child {
     opacity: 1;
   }
 }
+
+/* Staggered fade-in animations for hvem page */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.stagger-1 { animation: fadeInUp 0.8s ease-out 0.2s both; }
+.stagger-2 { animation: fadeInUp 0.8s ease-out 0.4s both; }
+.stagger-3 { animation: fadeInUp 0.8s ease-out 0.6s both; }
+.stagger-4 { animation: fadeInUp 0.8s ease-out 0.8s both; }
+.stagger-5 { animation: fadeInUp 0.8s ease-out 1.0s both; }
+.stagger-6 { animation: fadeInUp 0.8s ease-out 1.2s both; }
 
 .case {
   overflow: hidden;

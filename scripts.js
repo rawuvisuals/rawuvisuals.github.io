@@ -12,6 +12,33 @@ function initGrainEffect() {
   }
 }
 
+// Video autoplay handler for Safari
+function initVideoAutoplay() {
+  const video = document.querySelector('.video');
+  if (video) {
+    // Ensure video is muted (Safari requirement)
+    video.muted = true;
+    video.volume = 0;
+
+    // Try to play the video
+    const playPromise = video.play();
+
+    if (playPromise !== undefined) {
+      playPromise.then(() => {
+        // Autoplay started successfully
+        console.log('Video autoplay started');
+      }).catch(error => {
+        // Autoplay failed - this is common on Safari
+        // Only log if it's not the expected NotAllowedError
+        if (!error.message.includes('NotAllowedError')) {
+          console.log('Autoplay failed:', error);
+        }
+        // Video will remain paused - this is expected Safari behavior
+      });
+    }
+  }
+}
+
 // Globe animation - only on index.html
 async function initGlobe() {
   const canvas = document.getElementById("cobe");
@@ -134,6 +161,7 @@ function initVideoModal() {
 // Initialize all scripts when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
   initGrainEffect();
+  initVideoAutoplay();
   initGlobe();
   initCases();
   initVideoModal();
