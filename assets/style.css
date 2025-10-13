@@ -80,6 +80,7 @@ body {
   font-family: 'Inter', sans-serif;
   font-size: 18px;
   min-height: 100vh;
+  overscroll-behavior: contain;
 }
 
 h1,
