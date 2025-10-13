@@ -84,6 +84,8 @@ function initCases() {
     cases = [];
   }
 
+  cases.sort((a, b) => b.date.localeCompare(a.date));
+
   cases.forEach((item, i) => {
     const caseNum = i + 1;
     const link = document.createElement('a');
@@ -123,19 +125,18 @@ function initCases() {
 function initVideoModal() {
   const modal = document.getElementById('video-modal');
   const modalVideo = document.getElementById('modal-video');
-  const thumb = document.getElementById('video-thumb');
-  const playBtn = document.getElementById('play-btn');
   const closeModal = document.getElementById('close-modal');
 
-  if (!modal || !modalVideo || !thumb || !playBtn || !closeModal) return;
+  if (!modal || !modalVideo || !closeModal) return;
 
-  const openModal = () => {
+  // Function to open modal with specific video
+  const openModal = (videoElement) => {
     modal.style.display = 'flex';
     setTimeout(() => { modal.style.opacity = '1'; }, 10);
     
     // Get video ID from data attributes
-    const youtubeId = thumb.getAttribute('data-youtube-id');
-    const vimeoId = thumb.getAttribute('data-vimeo-id');
+    const youtubeId = videoElement.getAttribute('data-youtube-id');
+    const vimeoId = videoElement.getAttribute('data-vimeo-id');
     
     if (youtubeId) {
       modalVideo.src = `https://www.youtube.com/embed/${youtubeId}?autoplay=1&controls=1&modestbranding=1&showinfo=0&rel=0&fs=1`;
@@ -144,12 +145,28 @@ function initVideoModal() {
     }
   };
 
-  thumb.addEventListener('click', openModal);
-  playBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    openModal();
+  // Handle both old ID-based approach and new class-based approach
+  const videoContainers = document.querySelectorAll('.video-container');
+  
+  videoContainers.forEach(container => {
+    // Try to find elements by ID first (backwards compatibility)
+    let thumb = container.querySelector('#video-thumb');
+    let playBtn = container.querySelector('#play-btn');
+    
+    // If not found by ID, try by class (new approach)
+    if (!thumb) thumb = container.querySelector('.video-thumb');
+    if (!playBtn) playBtn = container.querySelector('.play-button');
+    
+    if (thumb && playBtn) {
+      thumb.addEventListener('click', () => openModal(thumb));
+      playBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        openModal(thumb);
+      });
+    }
   });
 
+  // Close modal functionality
   closeModal.addEventListener('click', () => {
     modal.style.opacity = '0';
     setTimeout(() => {
