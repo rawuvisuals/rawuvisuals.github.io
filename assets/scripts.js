@@ -49,20 +49,20 @@ async function initGlobe() {
         width: 1000,
         height: 1000,
         phi: 0,
-        theta: 0,
+        theta: 0.3,
         dark: 1,
-        diffuse: 1.2,
         scale: 1,
-        mapSamples: 16000,
-        mapBrightness: 6,
-        baseColor: [1, 1, 1],
+        diffuse: 2,
+        mapSamples: 20000,
+        mapBrightness: 12,
+        baseColor: [0.2, 0.2, 0.2],
         markerColor: [1, 0.5, 1],
         glowColor: [1, 1, 1],
         offset: [0, 0],
         markers: [],
         onRender: (state) => {
           state.phi = phi;
-          phi += 0.01;
+          phi += 0.0025;
         },
       });
     } catch (error) {
@@ -97,9 +97,9 @@ function initCases() {
       <div class="case-blur"></div>
       <div class="title">
         <svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" viewBox="0 0 24 24" fill="none"
-          stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="5" y1="12" x2="19" y2="12"></line>
-          <polyline points="12 5 19 12 12 19"></polyline>
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="1" y1="12" x2="23" y2="12"></line>
+          <polyline points="16 5 23 12 16 19"></polyline>
         </svg>
         <div>
           <h3>${item.title}</h3>
