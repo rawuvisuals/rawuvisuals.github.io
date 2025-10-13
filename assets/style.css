@@ -429,7 +429,7 @@ td:first-child {
 
 .grain-effect {
   background: url('grain.png');
-  opacity: 0.1;
+  opacity: 0.05;
   position: absolute;
   inset: 0;
   width: 130vw;
