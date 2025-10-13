@@ -156,6 +156,9 @@ a:hover {
 .content {
   width: 100%;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
 
 .home-page .content {
