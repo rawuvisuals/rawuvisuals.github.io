@@ -423,7 +423,7 @@ td:first-child {
 }
 
 .gradient-overlay {
-  background: linear-gradient(220deg, rgba(255, 255, 255, 0) 60.05382521119378%, hsl(0, 0%, 0%) 120.0062716057621%);
+  /* background: linear-gradient(220deg, rgba(255, 255, 255, 0) 60.05382521119378%, hsl(0, 0%, 0%) 120.0062716057621%); */
   inset: 0;
   width: 100vw;
   height: 100vh;
