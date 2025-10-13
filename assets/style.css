@@ -131,6 +131,11 @@ a:hover {
   min-height: calc(100vh - 96px);
   padding: 48px;
 }
+@media (max-width: 1024px) {
+  .page {
+    padding: 16px;
+  }
+}
 
 .footer {
   z-index: 0;
@@ -264,7 +269,8 @@ th {
 tr {
   border-bottom: 1px solid rgb(47, 47, 47);
   line-height: 3rem;
-  width: 100%;
+  width: calc(100% - 16px);
+  padding-inline: 8px;
 }
 
 th {
