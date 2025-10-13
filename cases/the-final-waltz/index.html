@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Final Waltz – Rawuvisuals</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Big+Shoulders:opsz,wght@10..72,100..900&family=Geist+Mono:wght@100..900&family=Geist:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/style.css">
+</head>
+
+<body class="fade-in">
+  <div class="page">
+    <header class="header">
+      <a href="/"><img src="../../assets/logo.svg" width="45" alt="Rawuvisuals Logo"></a>
+      <a href="/">Forside</a>
+      <a href="/hvem">Hvem</a>
+      <a href="/cases" class="active">Cases</a>
+    </header>
+    <main class="content">
+      <h1>The Final Waltz</h1>
+      <!-- Modal for video -->
+      <div id="video-modal" class="video-modal">
+        <div class="modal-content">
+          <button id="close-modal" class="close-button">&times;</button>
+          <iframe id="modal-video" class="modal-video" src="" allowfullscreen></iframe>
+        </div>
+      </div>
+      <div class="content-flex content-flex-wrap">
+        <div class="left-column">
+          <div class="video-container">
+            <img id="video-thumb" class="video-thumb"
+              src="../../assets/cases/the-final-waltz.jpg"
+              alt="The Final Waltz" 
+              data-vimeo-id="783699120" />
+            <button id="play-btn" class="play-button" aria-label="Play video">
+              <img src="../../assets/play.svg" alt="Play" width="36" height="36" class="play-icon" />
+            </button>
+          </div>
+        </div>
+        <div class="right-column">
+          <h2>Projekt detaljer</h2>
+          <p>Short film fra 2022 hvor jeg arbejdede som Director of Photography, Colorgrade og Coordinator. Et intimt drama der udforskede temaer om afslutninger og nye begyndelser.</p>
+          <h2>Min rolle</h2>
+          <ul>
+            <li><strong>Director of Photography:</strong> Kreativ ansvar for filmens visuelle udtryk og cinematografi</li>
+            <li><strong>Colorgrade:</strong> Post-produktion farvebehandling for at skabe den rette stemning</li>
+            <li><strong>Coordinator:</strong> Sikrede smidig kommunikation mellem cast og crew</li>
+          </ul>
+          <h2>Kunstnerisk vision</h2>
+          <p>Projektet fokuserede på at skabe en visuelt smuk og emotionelt engagerende fortælling gennem omhyggelig cinematografi og farvebehandling. Det var et samarbejde der krævede præcision i hver detalje.</p>
+          <h2>Resultat</h2>
+          <p>En cinematografisk short film der demonstrerer min evne til at kombinere teknisk ekspertise med kunstnerisk vision for at skabe meningsfuld visuel fortælling.</p>
+        </div>
+      </div>
+    </main>
+    <footer class="footer">
+      <div class="footer-row">
+        <a href="mailto:rawubusiness@gmail.com">rawubusiness@gmail.com</a>
+        <div>
+          <a href="#">Tiktok</a>
+          <a href="#">Instagram</a>
+        </div>
+      </div>
+      <div class="footer-row footer-row-margin">
+        <a href="tel:+4521141517">+45 21 41 51 7</a>
+        <div>
+          <a href="#">Youtube</a>
+          <a href="#">X</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Don't touch this shit, it's the fancy ass gradient. -->
+  <div class="gradient-overlay">
+    <div id="grain" class="grain-effect">
+    </div>
+  </div>
+
+  <script src="../../assets/scripts.js"></script>
+</body>
+
+</html>

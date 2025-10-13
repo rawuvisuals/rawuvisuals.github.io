@@ -1,5 +1,3 @@
-// scripts.js - Unified JavaScript for Rawuvisuals portfolio
-
 // Grain effect - runs on all pages
 function initGrainEffect() {
   const grain = document.getElementById("grain");
@@ -134,7 +132,16 @@ function initVideoModal() {
   const openModal = () => {
     modal.style.display = 'flex';
     setTimeout(() => { modal.style.opacity = '1'; }, 10);
-    modalVideo.src = 'https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&controls=1&modestbranding=1&showinfo=0&rel=0&fs=1';
+    
+    // Get video ID from data attributes
+    const youtubeId = thumb.getAttribute('data-youtube-id');
+    const vimeoId = thumb.getAttribute('data-vimeo-id');
+    
+    if (youtubeId) {
+      modalVideo.src = `https://www.youtube.com/embed/${youtubeId}?autoplay=1&controls=1&modestbranding=1&showinfo=0&rel=0&fs=1`;
+    } else if (vimeoId) {
+      modalVideo.src = `https://player.vimeo.com/video/${vimeoId}?autoplay=1&title=0&byline=0&portrait=0`;
+    }
   };
 
   thumb.addEventListener('click', openModal);
@@ -158,6 +165,39 @@ function initVideoModal() {
   });
 }
 
+// Hover thumbnail functionality for project rows
+function initHoverThumbnail() {
+  const hoverThumbnail = document.getElementById('hover-thumbnail');
+  const projectRows = document.querySelectorAll('.project-row');
+  
+  if (!hoverThumbnail || projectRows.length === 0) return;
+  
+  const thumbnailImg = hoverThumbnail.querySelector('img');
+  
+  projectRows.forEach(row => {
+    row.addEventListener('mouseenter', (e) => {
+      const thumbnailUrl = row.getAttribute('data-thumbnail');
+      if (thumbnailUrl) {
+        thumbnailImg.src = thumbnailUrl;
+        hoverThumbnail.classList.add('visible');
+      }
+    });
+    
+    row.addEventListener('mouseleave', () => {
+      hoverThumbnail.classList.remove('visible');
+    });
+    
+    row.addEventListener('mousemove', (e) => {
+      if (hoverThumbnail.classList.contains('visible')) {
+        const x = e.clientX;
+        const y = e.clientY;
+        hoverThumbnail.style.left = x + 'px';
+        hoverThumbnail.style.top = y + 'px';
+      }
+    });
+  });
+}
+
 // Initialize all scripts when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
   initGrainEffect();
@@ -165,4 +205,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initGlobe();
   initCases();
   initVideoModal();
+  initHoverThumbnail();
 });

@@ -3,12 +3,13 @@
   font-weight: 700;
   line-height: 1.2;
 }
+
 .case {
   color: white;
   position: relative;
   overflow: hidden;
   min-height: 150px;
-  aspect-ratio: 16/9;
+  aspect-ratio: 2/1;
 }
 
 .case-blur {
@@ -64,6 +65,7 @@
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
+
 html,
 body {
   margin: 0;
@@ -126,8 +128,9 @@ a:hover {
   min-height: calc(100vh - 96px);
   padding: 48px;
 }
+
 .footer {
-  margin-top: auto;
+  margin-top: 32px;
 }
 
 .home-page {
@@ -144,7 +147,6 @@ a:hover {
   overflow: hidden;
 }
 
-
 .content {
   width: 100%;
   overflow: hidden;
@@ -153,6 +155,26 @@ a:hover {
 .home-page .content {
   width: 50%;
   border-left: 1px solid rgba(255,255,255,0.2);
+}
+
+
+@media (min-width: 600px) {
+  .cases-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 1024px) {
+  .home-page .content {
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    inset: 0px;
+  }
+
+  .home-page .sidebar {
+    width: 100%;
+  }
 }
 
 .video {
@@ -445,4 +467,42 @@ td:first-child {
 .right-column {
   flex: 2 1 400px;
   min-width: 300px;
+}
+
+/* Hover Thumbnail */
+.hover-thumbnail {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 1000;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.8);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  max-width: 400px;
+  max-height: 280px;
+}
+
+.hover-thumbnail.visible {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.hover-thumbnail img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}
+
+.project-row {
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.project-row:hover {
+  background-color: rgba(255, 255, 255, 0.05);
 }
