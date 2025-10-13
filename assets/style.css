@@ -166,7 +166,7 @@ a:hover {
 .home-page .sidebar-content {
   align-items: center;
   justify-content: start;
-  padding-top: 10vh;
+  padding-top: 5vh;
   flex-grow: 1;
 }
 
@@ -193,7 +193,7 @@ a:hover {
   bottom: 0;
   flex-shrink: 0;
   /* transform: translateY(min(50vh, 25vw)) scale(1); */
-  transform: translateY(-7.5vw);
+  transform: translateY(-6.5vw);
   z-index: 1;
 }
 
@@ -390,7 +390,7 @@ td:first-child {
   transform: scaleY(2.25) scaleX(1.6);
   font-weight: 600;
   margin-inline: auto;
-  z-index: 2;
+  z-index: 1;
 }
 
 @media (max-width: 1024px) {
