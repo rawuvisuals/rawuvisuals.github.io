@@ -390,7 +390,7 @@ td:first-child {
   transform: scaleY(2.25) scaleX(1.6);
   font-weight: 600;
   margin-inline: auto;
-  z-index: 1;
+  z-index: 2;
 }
 
 @media (max-width: 1024px) {
