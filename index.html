@@ -4,66 +4,80 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rawuvisuals</title>
+  <title>Rawuvisuals - Creative Video Agency</title>
+  <meta name="description" content="RawuVisuals - Creative video agency specializing in storytelling, production and aesthetics. From commercial films to short films and content strategies.">
+  
+  <!-- Preload critical resources -->
+  <link rel="preload" href="assets/style.css" as="style">
+  <link rel="preload" href="assets/logo.svg" as="image">
+  
+  <!-- Font optimization -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
     href="https://fonts.googleapis.com/css2?family=Big+Shoulders:opsz,wght@10..72,100..900&family=Geist+Mono:wght@100..900&family=Geist:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
-    rel="stylesheet">
+    rel="stylesheet"
+    media="print" onload="this.media='all'">
+  <noscript><link
+    href="https://fonts.googleapis.com/css2?family=Big+Shoulders:opsz,wght@10..72,100..900&family=Geist+Mono:wght@100..900&family=Geist:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+    rel="stylesheet"></noscript>
+    
   <link rel="stylesheet" href="assets/style.css">
 </head>
 
 <body class="fade-in">
-    <div class="page home-page">
-      <aside class="sidebar">
-        <header class="header">
-          <img src="assets/logo.svg" width="45" alt="Rawuvisuals Logo">
-          <a href="/" class="active">Home</a>
-          <a href="/hvem">About</a>
-          <a href="/cases">Cases</a>
-        </header>
+  <div class="page home-page">
+    <aside class="sidebar">
+      <header class="header">
+        <img src="assets/logo.svg" width="45" alt="Rawuvisuals Logo">
+        <a href="/" class="active">Home</a>
+        <a href="/hvem">About</a>
+        <a href="/cases">Cases</a>
+      </header>
 
-        <div class="sidebar-content">
-          <h1 class="display display-title">
-            <span>RAWU</span>
-            <span>VISUALS</span>
-          </h1>
+      <div class="sidebar-content">
+        <h1 class="display display-title">
+          <span>RAWU</span>
+          <span>VISUALS</span>
+        </h1>
 
-          <canvas id="cobe" class="globe-canvas" width="500" height="500"></canvas>
-        </div>
-
-        <div class="footer">
-          <div class="footer-row">
-            <a href="mailto:oj@rawuvisuals.com">oj@rawuvisuals.com</a>
-            <div>
-              <a href="#">Tiktok</a>
-              <a href="#">Instagram</a>
-            </div>
-          </div>
-          <div class="footer-row footer-row-margin">
-            <a href="tel:+4521141517">+45 21 41 51 7</a>
-            <div>
-              <a href="#">Youtube</a>
-              <a href="#">X</a>
-            </div>
-          </div>
-        </div>
-      </aside>
-      <main class="content">
-        <video autoplay loop muted playsinline class="video" preload="auto">
-          <source src="assets/haardting.mp4" type="video/mp4">
-        </video>
-      </main>
-    </div>
-
-    <!-- Don't touch this shit, it's the fancy ass gradient. -->
-    <div class="gradient-overlay">
-      <div id="grain" class="grain-effect">
+        <canvas id="cobe" class="globe-canvas" width="500" height="500"></canvas>
       </div>
-    </div>
 
-    <script src="assets/scripts.js"></script>
+      <div class="footer">
+        <div class="footer-row">
+          <a href="mailto:oj@rawuvisuals.com">oj@rawuvisuals.com</a>
+          <div>
+            <a href="#">Tiktok</a>
+            <a href="#">Instagram</a>
+          </div>
+        </div>
+        <div class="footer-row footer-row-margin">
+          <a href="tel:+4521141517">+45 21 41 51 7</a>
+          <div>
+            <a href="#">Youtube</a>
+            <a href="#">X</a>
+          </div>
+        </div>
+      </div>
+    </aside>
+    <main class="content">
+      <a href="/cases">
+        <video autoplay loop muted playsinline class="video" preload="auto">
+          <source src="assets/videos/haardting.mp4" type="video/mp4">
+        </video>
+      </a>
+    </main>
+  </div>
+
+  <!-- Don't touch this shit, it's the fancy ass gradient. -->
+  <div class="gradient-overlay">
+    <div id="grain" class="grain-effect">
     </div>
-  </body>
+  </div>
+
+  <script src="assets/scripts.js"></script>
+  </div>
+</body>
 
 </html>

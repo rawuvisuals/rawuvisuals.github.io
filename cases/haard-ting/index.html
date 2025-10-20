@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hård Ting – Rawuvisuals</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Big+Shoulders:opsz,wght@10..72,100..900&family=Geist+Mono:wght@100..900&family=Geist:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/style.css">
+</head>
+
+<body class="fade-in">
+  <div class="page">
+    <header class="header">
+      <img src="../../assets/logo.svg" width="45" alt="Rawuvisuals Logo">
+      <a href="/">Home</a>
+      <a href="/hvem">About</a>
+      <a href="/cases" class="active">Cases</a>
+    </header>
+    <main class="content">
+      <h1>Hård Ting - Music Video</h1>
+      <!-- Modal for video -->
+      <div id="video-modal" class="video-modal">
+        <div class="modal-content">
+          <button id="close-modal" class="close-button">&times;</button>
+          <iframe id="modal-video" class="modal-video" src="" allowfullscreen></iframe>
+        </div>
+      </div>
+      <div class="content-flex content-flex-wrap">
+        <div class="left-column">
+          <div class="video-container">
+            <img id="video-thumb" class="video-thumb"
+              src="../../assets/cases/haard-ting.jpg"
+              alt="Hård Ting Music Video" 
+              data-youtube-id="PVjRpG29B-o" />
+            <button id="play-btn" class="play-button" aria-label="Play video">
+              <img src="../../assets/play.svg" alt="Play" width="36" height="36" class="play-icon" />
+            </button>
+          </div>
+        </div>
+        <div class="right-column">
+          <h2>Project Details</h2>
+          <p>Music video for rap duo Hård Ting (2023). As Director of Photography, Producer, Editor and Coordinator on this project, I had responsibility for the visual storytelling from concept to finished product.</p>
+          <h2>My Role</h2>
+          <ul>
+            <li><strong>Director of Photography:</strong> Responsible for visual expression and cinematography</li>
+            <li><strong>Producer:</strong> Project management and production coordination</li>
+            <li><strong>Editor:</strong> Post-production and video editing</li>
+            <li><strong>Coordinator:</strong> Collaboration between all involved parties</li>
+          </ul>
+          <h2>Result</h2>
+          <p>A dynamic music video that captures the essence of Hård Ting's unique style. The project demonstrates my ability to handle multiple roles simultaneously and deliver a cohesive creative product.</p>
+        </div>
+      </div>
+
+      <!-- Behind The Scenes Section -->
+      <section class="bts-section">
+        <h2>Behind The Scenes</h2>
+        <p class="bts-intro">Get an exclusive look at the production process behind the "Hård Ting" music video.</p>
+        
+        <div class="bts-grid">
+          <div class="bts-item bts-photo">
+            <img src="../../assets/cases/haard-ting/img-12112.jpg" alt="Director of Photography setup" class="bts-image">
+          </div>
+          <div class="bts-item bts-video" data-aspect="9/16">
+            <div class="video-container">
+              <img class="video-thumb bts-video-thumb" 
+                   src="../../assets/cases/haard-ting/IMG_6264_thumb.jpg" 
+                   alt="Behind the scenes video" 
+                   data-video-src="../../assets/cases/haard-ting/IMG_6264.mp4" />
+              <button class="play-button bts-play-btn" aria-label="Play BTS video">
+                <img src="../../assets/play.svg" alt="Play" width="20" height="20" class="play-icon" />
+              </button>
+            </div>
+          </div>
+          
+          <div class="bts-item bts-photo">
+            <img src="../../assets/cases/haard-ting/img-121182.jpg" alt="Production coordination on set" class="bts-image">
+          </div>
+          
+          <div class="bts-item bts-photo">
+            <img src="../../assets/cases/haard-ting/img-12828.jpg" alt="Cinematography and lighting setup" class="bts-image">
+          </div>
+          
+          <div class="bts-item bts-photo">
+            <img src="../../assets/cases/haard-ting/img-22821.jpg" alt="Creative collaboration with Hård Ting" class="bts-image">
+          </div>
+          
+          <div class="bts-item bts-photo">
+            <img src="../../assets/cases/haard-ting/img-23212.jpg" alt="Multi-role production work" class="bts-image">
+          </div>
+  
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="footer-row">
+        <a href="mailto:oj@rawuvisuals.com">oj@rawuvisuals.com</a>
+        <div>
+          <a href="#">Tiktok</a>
+          <a href="#">Instagram</a>
+        </div>
+      </div>
+      <div class="footer-row footer-row-margin">
+        <a href="tel:+4521141517">+45 21 41 51 7</a>
+        <div>
+          <a href="#">Youtube</a>
+          <a href="#">X</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Don't touch this shit, it's the fancy ass gradient. -->
+  <div class="gradient-overlay">
+    <div id="grain" class="grain-effect">
+    </div>
+  </div>
+
+  <script src="../../assets/scripts.js"></script>
+</body>
+
+</html>

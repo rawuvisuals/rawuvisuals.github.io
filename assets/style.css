@@ -51,10 +51,11 @@
   line-height: 1.4;
 }
 
-.cases-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 16px;
+
+@media (min-width: 1536px) {
+  .cases-grid {
+    grid-template-columns: 1fr 1fr 1fr !important;
+  }
 }
 
 @media (min-width: 600px) {
@@ -63,10 +64,10 @@
   }
 }
 
-@media (min-width: 1024px) {
-  .cases-grid {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
+.cases-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
 }
 
 html,
@@ -92,6 +93,138 @@ h5,
 h6 {
   font-family: 'Big Shoulders Display', 'Big Shoulders', cursive, sans-serif;
   color: rgb(247, 255, 247);
+}
+
+/* Case page typography improvements */
+main.content h1 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 2rem;
+  letter-spacing: -0.02em;
+}
+
+main.content h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  letter-spacing: -0.01em;
+}
+
+main.content h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.3;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+main.content p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+main.content ul {
+  margin-bottom: 2rem;
+}
+
+main.content li {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin-bottom: 0.75rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+main.content li strong {
+  color: rgb(247, 255, 247);
+  font-weight: 600;
+}
+
+/* Case page layout improvements */
+.content-flex.content-flex-wrap {
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+.right-column {
+  flex: 1;
+  min-width: 300px;
+}
+
+.left-column {
+  flex: 1;
+  min-width: 300px;
+}
+
+/* Video container improvements */
+.video-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  background: transparent;
+}
+
+.video-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease, filter 0.3s ease;
+  filter: grayscale(1);
+}
+
+.video-container:hover .video-thumb {
+  transform: scale(1.05);
+  filter: grayscale(0);
+}
+
+/* Ensure consistent behavior for all video thumbnails */
+.cases-grid .video-thumb,
+.content .video-thumb {
+  cursor: pointer;
+  transition: transform 0.4s ease, filter 0.3s ease;
+  filter: grayscale(1);
+  display: block;
+}
+
+.cases-grid .video-container:hover .video-thumb,
+.content .video-container:hover .video-thumb {
+  filter: grayscale(0);
+  transform: scale(1.05);
+}
+
+/* Play button improvements */
+.play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 255, 255, 0.95);
+  border: none;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.play-button:hover {
+  background: white;
+  transform: translate(-50%, -50%) scale(1.1);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+}
+
+.play-button .play-icon {
+  margin-left: 3px;
 }
 
 .right-column :first-child {
@@ -124,8 +257,8 @@ a:hover {
   align-items: center;
   justify-content: space-between;
   padding-right: 24px;
+  z-index: 24;
 }
-
 
 .page {
   display: flex;
@@ -142,6 +275,8 @@ a:hover {
 .footer {
   z-index: 0;
   margin-top: 32px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 24px;
 }
 
 .home-page {
@@ -170,14 +305,30 @@ a:hover {
 
 .home-page .content {
   width: 50%;
-  border-left: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .home-page .sidebar-content {
   align-items: center;
-  justify-content: start;
+  justify-content: center;
   padding-top: 5vh;
   flex-grow: 1;
+}
+
+@media (max-width: 1024px) {
+  .home-page .sidebar-content {
+    padding-top: 0;
+  }
+}
+
+.home-page .sidebar {
+  position: relative;
+}
+
+.home-page .footer {
+  position: absolute;
+  bottom: 48px;
+  left: 48px;
+  right: 48px;
 }
 
 @media (max-width: 600px) {
@@ -196,20 +347,27 @@ a:hover {
 
 
 .globe-canvas {
-  position: fixed;
+  /* position: fixed; */
   width: 500px;
   height: 500px;
   object-fit: cover;
   bottom: 0;
   flex-shrink: 0;
   /* transform: translateY(min(50vh, 25vw)) scale(1); */
-  transform: translateY(-6.5vw);
-  z-index: 1;
+  transform: translateY(-6.5vw) scale(1.2);
+  z-index: 0;
+}
+
+@media (min-width: 1536px) {
+  .globe-canvas {
+    transform: translateY(-5.5vw) scale(1.4);
+  }
 }
 
 @media (max-width: 1024px) {
   .globe-canvas {
-    transform: translateY(50%) scale(2);
+    position: fixed;
+    transform: translateY(50vh) scale(3);
     filter: blur(1px);
     z-index: 0;
   }
@@ -525,6 +683,34 @@ td:first-child {
   justify-content: center;
 }
 
+/* Responsive modal for mobile and vertical videos */
+@media (max-width: 768px) {
+  .modal-content {
+    width: 90vw;
+    margin: 0 5vw;
+    max-height: 90vh;
+  }
+}
+
+/* Special handling for vertical aspect ratios */
+.modal-content[style*="aspect-ratio: 9/16"],
+.modal-content[style*="aspect-ratio: 3/4"],
+.modal-content[style*="aspect-ratio: 4/5"] {
+  width: 40vw;
+  margin: 0 30vw;
+  max-height: 85vh;
+}
+
+@media (max-width: 768px) {
+  .modal-content[style*="aspect-ratio: 9/16"],
+  .modal-content[style*="aspect-ratio: 3/4"],
+  .modal-content[style*="aspect-ratio: 4/5"] {
+    width: 60vw;
+    margin: 0 20vw;
+    max-height: 80vh;
+  }
+}
+
 .close-button {
   position: absolute;
   top: -45px;
@@ -543,6 +729,9 @@ td:first-child {
   border: none;
   background: black;
   aspect-ratio: 16/9;
+  object-fit: contain;
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .content-flex-wrap {
@@ -556,24 +745,7 @@ td:first-child {
   align-items: flex-start;
 }
 
-.video-container {
-  position: relative;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.video-thumb {
-  width: 100%;
-  margin-bottom: 24px;
-  cursor: pointer;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
-  transition: box-shadow 0.2s;
-  filter: grayscale(1);
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
-}
+/* Cases page specific video styles - consolidated above */
 
 .play-button {
   position: absolute;
@@ -613,7 +785,6 @@ td:first-child {
   opacity: 0;
   transform: translate(-50%, -50%) scale(0.8);
   transition: opacity 0.3s ease, transform 0.3s ease;
-  border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   max-width: 400px;
@@ -635,7 +806,6 @@ td:first-child {
   width: 100%;
   height: auto;
   display: block;
-  border-radius: 8px;
 }
 
 .project-row {
@@ -645,4 +815,205 @@ td:first-child {
 
 tbody tr:hover {
   background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* BTS (Behind The Scenes) Section Styles */
+.bts-section {
+  margin-top: 4rem;
+  padding-top: 3rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.bts-section h2 {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  color: white;
+  letter-spacing: -0.02em;
+}
+
+.bts-intro {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 2.5rem;
+  max-width: 600px;
+  line-height: 1.6;
+}
+
+.bts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-auto-rows: 200px;
+  gap: 8px;
+  margin-top: 2rem;
+  width: 100%;
+  grid-auto-flow: dense;
+}
+
+.bts-item {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+}
+
+/* Utility span classes */
+.span-1 { grid-column: span 1; }
+.span-2 { grid-column: span 2; }
+.span-3 { grid-column: span 3; }
+.span-4 { grid-column: span 4; }
+
+.row-span-1 { grid-row: span 1; }
+.row-span-2 { grid-row: span 2; }
+.row-span-3 { grid-row: span 3; }
+
+/* Add visual interest with varied transitions */
+.bts-item:nth-child(odd) {
+  transition: transform 0.5s ease, box-shadow 0.3s ease;
+}
+
+.bts-item:nth-child(even) {
+  transition: transform 0.3s ease, box-shadow 0.5s ease;
+}
+
+/* Desktop breakpoints */
+@media (min-width: 1200px) {
+  .bts-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-auto-rows: 250px;
+    gap: 12px;
+  }
+}
+
+.bts-item:hover {
+  transform: scale(1.05) !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+  z-index: 100;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.bts-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease, filter 0.3s ease;
+  filter: grayscale(0.3);
+  display: block;
+}
+
+.bts-item:hover .bts-image {
+  transform: scale(1.05);
+  filter: grayscale(0);
+}
+
+/* BTS Video specific styling */
+.bts-video .video-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.bts-video-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(0.3);
+  transition: transform 0.4s ease, filter 0.3s ease;
+}
+
+.bts-video:hover .bts-video-thumb {
+  transform: scale(1.05);
+  filter: grayscale(0);
+}
+
+.bts-play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 255, 255, 0.95);
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.bts-play-btn:hover {
+  background: white;
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+.bts-play-btn .play-icon {
+  width: 20px;
+  height: 20px;
+  margin-left: 2px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .bts-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 150px;
+    gap: 4px;
+  }
+  
+  /* Simplify spans on mobile */
+  .span-3, .span-4 { grid-column: span 2; }
+  
+  .bts-section {
+    margin-top: 3rem;
+    padding-top: 2rem;
+  }
+  
+  .bts-section h2 {
+    font-size: 2rem;
+  }
+  
+  .bts-play-btn {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .bts-play-btn .play-icon {
+    width: 16px;
+    height: 16px;
+  }
+  
+  /* Mobile typography adjustments */
+  main.content h1 {
+    font-size: 2.5rem;
+  }
+  
+  main.content h2 {
+    font-size: 1.75rem;
+    margin-top: 2rem;
+  }
+  
+  .bts-section h2 {
+    font-size: 2.25rem;
+  }
+  
+  main.content p {
+    font-size: 1rem;
+  }
+  
+  main.content li {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .bts-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 140px;
+    gap: 2px;
+  }
 }

@@ -4,26 +4,44 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rawuvisuals</title>
+  <title>Cases - Rawuvisuals</title>
+  <meta name="description" content="Portfolio of visual productions by Oliver from RawuVisuals - spanning commercials, short films, music videos and transmedial campaigns.">
+  
+  <!-- Preload critical resources -->
+  <link rel="preload" href="../assets/style.css" as="style">
+  <link rel="preload" href="../assets/scripts.js" as="script">
+  
+  <!-- Font optimization -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
     href="https://fonts.googleapis.com/css2?family=Big+Shoulders:opsz,wght@10..72,100..900&family=Geist+Mono:wght@100..900&family=Geist:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
-    rel="stylesheet">
+    rel="stylesheet"
+    media="print" onload="this.media='all'">
+  <noscript><link
+    href="https://fonts.googleapis.com/css2?family=Big+Shoulders:opsz,wght@10..72,100..900&family=Geist+Mono:wght@100..900&family=Geist:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+    rel="stylesheet"></noscript>
+  
   <link rel="stylesheet" href="../assets/style.css">
   <script id="cases-data" type="application/json">
     [
+      {
+        "title": "BLOB",
+        "date": "Upcoming",
+        "link": "blob",
+        "image": "../assets/cases/blob.jpg"
+      },
+      {
+        "title": "Zensorial by BECH",
+        "date": "2025",
+        "link": "zensorial",
+        "image": "../assets/cases/zensorial.jpg"
+      },
       {
         "title": "DiscomRobulated",
         "date": "2025",
         "link": "discomrobulated",
         "image": "../assets/cases/discomrobulated.jpg"
-      },
-      {
-        "title": "BLOB",
-        "date": "2026",
-        "link": "blob",
-        "image": "../assets/cases/blob.jpg"
       },
       {
         "title": "Epic Booking",
@@ -32,10 +50,10 @@
         "image": "../assets/cases/epic-booking.jpg"
       },
       {
-        "title": "GI' MIG PLADS",
+        "title": "Hård Ting",
         "date": "2023",
-        "link": "gi-mig-plads",
-        "image": "../assets/cases/gi-mig-plads.jpg"
+        "link": "haard-ting",
+        "image": "../assets/cases/haard-ting.jpg"
       },
       {
         "title": "Riqqeloff",
@@ -50,6 +68,18 @@
         "image": "../assets/cases/oil-team.jpg"
       },
       {
+        "title": "Toby Tang",
+        "date": "2023",
+        "link": "toby-tang",
+        "image": "../assets/cases/toby-tang.jpg"
+      },
+      {
+        "title": "The Final Waltz",
+        "date": "2022",
+        "link": "the-final-waltz",
+        "image": "../assets/cases/the-final-waltz.jpg"
+      },
+      {
         "title": "IMPOSTER",
         "date": "2022",
         "link": "imposter",
@@ -60,12 +90,6 @@
         "date": "2021",
         "link": "outside-the-tent",
         "image": "../assets/cases/outside-the-tent.jpg"
-      },
-      {
-        "title": "The Final Waltz",
-        "date": "2022",
-        "link": "the-final-waltz",
-        "image": "../assets/cases/the-final-waltz.jpg"
       }
     ]
   </script>
@@ -107,7 +131,7 @@
     </div>
   </div>
 
-  <script src="../assets/scripts.js"></script>
+  <script src="../assets/scripts.js" defer></script>
 </body>
 
 </html>
