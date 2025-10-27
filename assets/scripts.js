@@ -12,29 +12,15 @@ function initGrainEffect() {
 
 // Video autoplay handler for Safari
 function initVideoAutoplay() {
-  const video = document.querySelector('.video');
-  if (video) {
-    // Ensure video is muted (Safari requirement)
-    video.muted = true;
-    video.volume = 0;
-
-    // Try to play the video
-    const playPromise = video.play();
-
-    if (playPromise !== undefined) {
-      playPromise.then(() => {
-        // Autoplay started successfully
-        console.log('Video autoplay started');
-      }).catch(error => {
-        // Autoplay failed - this is common on Safari
-        // Only log if it's not the expected NotAllowedError
-        if (!error.message.includes('NotAllowedError')) {
-          console.log('Autoplay failed:', error);
-        }
-        // Video will remain paused - this is expected Safari behavior
-      });
-    }
-  }
+  const v = document.querySelector('.video');
+  if(v == null) return;
+  v.muted = true;
+  setTimeout(() => {
+    v.play().catch(() => {
+      console.log('Autoplay failed, waiting for user interaction to play video.');
+      document.body.addEventListener('click', () => v.play(), { once: true });
+    });
+  }, 100);
 }
 
 // Globe animation - only on index.html
@@ -94,13 +80,13 @@ function initCases() {
 
     const card = document.createElement('div');
     card.className = 'case case-animated';
-    
+
     // First 4 items load immediately (above the fold), rest are lazy loaded
     const isAboveFold = i < 4;
-    const imgAttributes = isAboveFold 
-      ? `src="${item.image}" loading="eager"` 
+    const imgAttributes = isAboveFold
+      ? `src="${item.image}" loading="eager"`
       : `src="${item.image}" loading="lazy" class="lazy-load"`;
-    
+
     card.innerHTML = `
       <img class="case-bg" ${imgAttributes} alt="${item.title} case background" />
       <div class="case-blur"></div>
@@ -141,32 +127,32 @@ function initVideoModal() {
   const openModal = (videoElement) => {
     modal.style.display = 'flex';
     setTimeout(() => { modal.style.opacity = '1'; }, 10);
-    
+
     // Get video ID from data attributes
     const youtubeId = videoElement.getAttribute('data-youtube-id');
     const vimeoId = videoElement.getAttribute('data-vimeo-id');
     const localVideoSrc = videoElement.getAttribute('data-video-src');
-    
+
     // Get aspect ratio from the video element's container
     const videoContainer = videoElement.closest('.bts-item');
     const aspectRatio = videoContainer ? videoContainer.getAttribute('data-aspect') : '16/9';
-    
+
     // Apply aspect ratio to modal content with smart sizing for vertical videos
     const modalContent = modal.querySelector('.modal-content');
-    
+
     // Check if it's a vertical video
     const [width, height] = aspectRatio.split('/').map(Number);
     const isVertical = height > width;
-    
+
     if (isVertical) {
       // For vertical videos, prioritize fitting within viewport height
       const maxHeight = window.innerHeight * 0.85; // 85vh
       const maxWidth = window.innerWidth * (window.innerWidth <= 768 ? 0.6 : 0.4);
-      
+
       // Calculate dimensions that fit within constraints
       const targetHeight = Math.min(maxHeight, maxWidth * (height / width));
       const targetWidth = targetHeight * (width / height);
-      
+
       modalContent.style.width = `${targetWidth}px`;
       modalContent.style.height = `${targetHeight}px`;
       modalContent.style.aspectRatio = 'unset';
@@ -177,7 +163,7 @@ function initVideoModal() {
       modalContent.style.height = '';
       modalContent.style.margin = '';
     }
-    
+
     if (youtubeId) {
       modalVideo.src = `https://www.youtube.com/embed/${youtubeId}?autoplay=1&controls=1&modestbranding=1&showinfo=0&rel=0&fs=1`;
       modalVideo.style.aspectRatio = aspectRatio || '16/9';
@@ -216,16 +202,16 @@ function initVideoModal() {
 
   // Handle both old ID-based approach and new class-based approach
   const videoContainers = document.querySelectorAll('.video-container');
-  
+
   videoContainers.forEach(container => {
     // Try to find elements by ID first (backwards compatibility)
     let thumb = container.querySelector('#video-thumb');
     let playBtn = container.querySelector('#play-btn');
-    
+
     // If not found by ID, try by class (new approach)
     if (!thumb) thumb = container.querySelector('.video-thumb');
     if (!playBtn) playBtn = container.querySelector('.play-button');
-    
+
     if (thumb && playBtn) {
       thumb.addEventListener('click', () => openModal(thumb));
       playBtn.addEventListener('click', (e) => {
@@ -244,7 +230,7 @@ function initVideoModal() {
       const iframe = modal.querySelector('#modal-video');
       const video = modal.querySelector('video');
       const modalContent = modal.querySelector('.modal-content');
-      
+
       if (iframe) {
         iframe.src = '';
         iframe.style.aspectRatio = '16/9'; // Reset to default
@@ -277,11 +263,11 @@ function initVideoModal() {
 function initHoverThumbnail() {
   const hoverThumbnail = document.getElementById('hover-thumbnail');
   const projectRows = document.querySelectorAll('.project-row');
-  
+
   if (!hoverThumbnail || projectRows.length === 0) return;
-  
+
   const thumbnailImg = hoverThumbnail.querySelector('img');
-  
+
   projectRows.forEach(row => {
     row.addEventListener('mouseenter', (e) => {
       const thumbnailUrl = row.getAttribute('data-thumbnail');
@@ -290,11 +276,11 @@ function initHoverThumbnail() {
         hoverThumbnail.classList.add('visible');
       }
     });
-    
+
     row.addEventListener('mouseleave', () => {
       hoverThumbnail.classList.remove('visible');
     });
-    
+
     row.addEventListener('mousemove', (e) => {
       if (hoverThumbnail.classList.contains('visible')) {
         const x = e.clientX;
@@ -317,7 +303,7 @@ function initSmartCollage() {
     const w = window.innerWidth;
     const cols = w >= 2400 ? 8 : w >= 1800 ? 7 : w >= 1600 ? 6 : w >= 1200 ? 5 : w >= 900 ? 4 : w >= 600 ? 3 : 2;
     const size = Math.floor(grid.offsetWidth / cols);
-    
+
     grid.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
     grid.style.gridAutoRows = `${size}px`;
 
@@ -327,15 +313,15 @@ function initSmartCollage() {
 
       // Reset classes
       item.className = item.className.replace(/\b(span|row-span)-\d+/g, '').replace(/\s+/g, ' ').trim();
-      
+
       // Get aspect ratio (manual override or natural)
-      const aspect = item.dataset.aspect 
+      const aspect = item.dataset.aspect
         ? item.dataset.aspect.split('/').reduce((a, b) => a / b)
         : img.naturalWidth / img.naturalHeight;
 
       const isVideo = item.classList.contains('bts-video');
       const random = seededRandom(i + 12345);
-      
+
       let colSpan = 1, rowSpan = 1;
 
       // Simple logic
