@@ -37,7 +37,7 @@ async function initGlobe() {
         phi: 0,
         theta: 0.3,
         dark: 1,
-        scale: 1,
+        scale: 0.5,
         diffuse: 2,
         mapSamples: 20000,
         mapBrightness: 12,
