@@ -314,6 +314,11 @@ a:hover {
   flex-grow: 1;
 }
 
+/* Interior pages must grow with their content so the document can scroll. */
+.page:not(.home-page) .content {
+  overflow: visible;
+}
+
 .home-page .content {
   width: 50%;
 }
