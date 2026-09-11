@@ -88,8 +88,12 @@ body {
   font-family: 'Inter', sans-serif;
   font-size: 18px;
   min-height: 100vh;
-  overscroll-behavior: contain;
   overflow-x: hidden;
+}
+
+/* Keep scroll chaining through body to the document viewport. */
+html {
+  overscroll-behavior: contain;
 }
 
 h1,
