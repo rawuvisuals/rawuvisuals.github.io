@@ -646,14 +646,41 @@ only screen and (                min-resolution: 2dppx) {
 }
 
 .content-flex {
-  display: flex;
-  column-gap: 48px;
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 48px;
   line-height: 2rem;
+}
+
+.about-intro {
+  font-size: 1.5rem;
+  line-height: 1.45;
+}
+
+.about-intro-column {
+  min-width: 0;
+}
+
+.about-illustration {
+  width: 100%;
+  max-width: 520px;
+  margin-top: 2rem;
+  object-fit: contain;
+  align-self: end;
 }
 
 @media (max-width: 1024px) {
   .content-flex {
-    flex-direction: column;
+    grid-template-columns: 1fr !important;
+    gap: 0;
+  }
+
+  .about-intro {
+    font-size: 1.5rem;
+  }
+
+  .about-illustration {
+    display: none;
   }
 }
 
